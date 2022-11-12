@@ -20,7 +20,7 @@ export async function getAllPosts(): Promise<BlogPostInfo[]> {
       const slug = getFileNameFromPath(md.file);
       const html = md.compiledContent();
       const filepath = md.file;
-      const canonicalUrl = `/${year}/${month}/${slug}.html`;
+      const canonicalUrl = `/${year}/${month}/${slug}/`;
       const title = md.frontmatter.title;
 
       return { year, month, slug, html, title, filepath, date, canonicalUrl };
