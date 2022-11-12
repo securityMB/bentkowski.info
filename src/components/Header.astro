@@ -1,0 +1,30 @@
+---
+import HeaderLink from "@components/HeaderLink.astro";
+---
+
+<header class="m-4">
+  <div class="flex flex-col align-middle items-center gap-4">
+    <a href="/" tabindex="-1">
+      <img
+        src="/my-avatar.jpeg"
+        alt="Photo of Michał Bentkowski"
+        class="col-span-1 mt-2 shadow-2xl rounded-full h-[140px] border-8 border-slate-300"
+      />
+    </a>
+    <a href="/" tabindex="-1">
+      <h1 class="font-bebas text-4xl text-center tracking-wide">
+        Michał Bentkowski
+      </h1>
+    </a>
+  </div>
+  <nav class="border-t border-b mt-2 mb-2 py-2 border-slate-300">
+    <ul class="flex flex-row gap-1 justify-between">
+      <li><HeaderLink href="/">About</HeaderLink></li>
+      <li><HeaderLink href="/blog">Blog</HeaderLink></li>
+      <li><HeaderLink href="/research">Research</HeaderLink></li>
+      <li>
+        <HeaderLink href="/contact">Contact</HeaderLink>
+      </li>
+    </ul>
+  </nav>
+</header>

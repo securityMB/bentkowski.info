@@ -1,0 +1,30 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+import { formatDate } from "@utils/formatDate";
+import { getAllPosts } from "@utils/markdown.astro";
+
+const blogPosts = await getAllPosts();
+---
+
+<MainLayout>
+  <section>
+    <h2 class="mb-4">List of blog posts:</h2>
+    <ul class="flex flex-col ml-8 gap-1 list-['→_']">
+      {
+        blogPosts.map((post) => (
+          <li>
+            <a href={post.canonicalUrl} class="font-bold hover:text-slate-500">
+              {post.title}
+            </a>
+            <time
+              datetime={formatDate(post.date, "yyyy-mm-dd")}
+              class="italic text-gray-500 text-sm"
+            >
+              {`(${formatDate(post.date, "long")})`}
+            </time>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</MainLayout>

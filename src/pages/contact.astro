@@ -1,0 +1,28 @@
+---
+import Icon from "astro-icon";
+import { CONTACT_DATA } from "@base/config";
+import MainLayout from "@layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <p>If you wish to contact me, use one of the following methods:</p>
+  <ul class="mt-4 flex flex-col gap-3">
+    {
+      CONTACT_DATA.map((data) => {
+        return (
+          <li>
+            <a
+              class="flex text-ellipsis items-center mx-4 gap-4 font-bold border p-2 hover:bg-slate-100 dark:hover:bg-slate-700"
+              href={data.href}
+              target="_blank"
+              rel="me"
+            >
+              <Icon name={data.icon} class="h-8" />
+              {data.text}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</MainLayout>

@@ -1,0 +1,23 @@
+---
+import BlogPost from "@layouts/BlogPost.astro";
+import type { BlogPostInfo } from "@base/types";
+import { getAllPosts } from "@utils/markdown.astro";
+
+export type Props = BlogPostInfo;
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+
+  return posts.map((info) => {
+    const { year, month, slug } = info;
+    return {
+      params: { year, month, slug },
+      props: info,
+    };
+  });
+}
+---
+
+<BlogPost {...Astro.props}>
+  <Fragment set:html={Astro.props.html} />
+</BlogPost>

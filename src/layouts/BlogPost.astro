@@ -1,0 +1,31 @@
+---
+import BlogPostNav from "@components/BlogPostNav.astro";
+import type { BlogPostInfo } from "@base/types";
+import { formatDate } from "@utils/formatDate";
+import Prose from "@layouts/Prose.astro";
+
+type Props = BlogPostInfo;
+const { date, title, prev, next } = Astro.props;
+---
+
+<Prose>
+  <article>
+    <header>
+      <h2
+        class="border py-1 px-1 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 mb-0 not-prose mt-0"
+      >
+        {title}
+      </h2>
+      <div
+        class="border-l border-r border-b text-xs px-1 py-1 not-prose text-slate-600 dark:text-slate-400"
+      >
+        Published on:
+        <time datetime={formatDate(date, "yyyy-mm-dd")}>
+          {formatDate(date, "long")}
+        </time>
+      </div>
+    </header>
+    <slot />
+  </article>
+  <BlogPostNav prev={prev} next={next} />
+</Prose>

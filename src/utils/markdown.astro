@@ -1,0 +1,47 @@
+---
+import type { BlogPostFrontmatter, BlogPostInfo } from "@base/types";
+
+export async function getAllPosts(): Promise<BlogPostInfo[]> {
+  function getFileNameFromPath(path: string) {
+    const lastDot = path.lastIndexOf(".");
+    const lastSlash = path.lastIndexOf("/");
+    return path.substring(lastSlash + 1, lastDot);
+  }
+  function dateComparer(a: BlogPostInfo, b: BlogPostInfo) {
+    return b.date.getTime() - a.date.getTime();
+  }
+
+  const posts = await Astro.glob<BlogPostFrontmatter>(`../posts/**/*.md`);
+  return posts
+    .map((md) => {
+      const date = new Date(md.frontmatter.date);
+      const year = "" + date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, "0");
+      const slug = getFileNameFromPath(md.file);
+      const html = md.compiledContent();
+      const filepath = md.file;
+      const canonicalUrl = `/${year}/${month}/${slug}.html`;
+      const title = md.frontmatter.title;
+
+      return { year, month, slug, html, title, filepath, date, canonicalUrl };
+    })
+    .sort(dateComparer)
+    .map(({ ...other }, index, posts) => {
+      const prevPost = posts[index + 1];
+      const nextPost = posts[index - 1];
+      let prev: BlogPostInfo["prev"];
+      let next: BlogPostInfo["next"];
+
+      if (prevPost) {
+        const { canonicalUrl, title } = prevPost;
+        prev = { canonicalUrl, title };
+      }
+      if (nextPost) {
+        const { canonicalUrl, title } = nextPost;
+        next = { canonicalUrl, title };
+      }
+
+      return { prev, next, ...other };
+    });
+}
+---

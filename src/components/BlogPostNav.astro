@@ -1,0 +1,39 @@
+---
+import type { BlogPostInfo } from "@base/types";
+
+export interface Props {
+  prev: BlogPostInfo["prev"];
+  next: BlogPostInfo["next"];
+}
+const { prev, next } = Astro.props;
+const className =
+  "border flex flex-col gap-1 py-2 px-4 shadow transition rounded hover:bg-slate-100 dark:hover:bg-slate-600";
+---
+
+<nav
+  class="grid grid-cols-2 gap-4 not-prose border-t pt-8"
+  aria-label="Blog posts navigation"
+>
+  {
+    prev ? (
+      <a href={prev.canonicalUrl} rel="prev" class={className}>
+        <div class="font-bold">
+          Previous post<span class="sr-only">:</span>
+        </div>
+        <div>{prev.title}</div>
+      </a>
+    ) : (
+      <div aria-hidden="true" /> /* Just a placeholder if there is no previous post */
+    )
+  }
+  {
+    next && (
+      <a href={next.canonicalUrl} rel="next" class={className}>
+        <div class="font-bold">
+          Next post<span class="sr-only">:</span>
+        </div>
+        <div>{next.title}</div>
+      </a>
+    )
+  }
+</nav>
