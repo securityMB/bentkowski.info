@@ -3,8 +3,12 @@ export interface Props {
   href: string;
 }
 
+function stripLastSlash(path: string) {
+  return path.replace(/\/+$/, "");
+}
+
 const { href } = Astro.props;
-const isActive = href === Astro.url.pathname;
+const isActive = stripLastSlash(href) === stripLastSlash(Astro.url.pathname);
 ---
 
 <a
