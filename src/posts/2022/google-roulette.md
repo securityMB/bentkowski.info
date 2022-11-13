@@ -1,5 +1,5 @@
 ---
-title: 'Same Origin Policy bypass within a single a.k.a. "Google Roulette"'
+title: 'Same Origin Policy bypass within a single site a.k.a. "Google Roulette"'
 date: "2022-11-20"
 ---
 
