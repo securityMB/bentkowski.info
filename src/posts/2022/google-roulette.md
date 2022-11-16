@@ -1,6 +1,7 @@
 ---
 title: 'Chromium: Same Origin Policy bypass within a single site a.k.a. "Google Roulette"'
 date: "2022-11-16"
+description: "Chromium bug allowing to bypass Same Origin Policy with a little help from DevTools"
 ---
 
 Suppose you're visiting a legit website, like `developers.google.com`, which tells you to open a JavaScript console in your browser, and then just invoke a function called `magic()`. Would you do it?

@@ -4,17 +4,30 @@ import BaseHead from "@components/BaseHead.astro";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@base/config";
+
+export type Props = {
+  title?: string;
+  description?: string;
+};
+
+const title = Astro.props.title
+  ? `${Astro.props.title} - ${SITE_TITLE}`
+  : SITE_TITLE;
+
+const description = Astro.props.description
+  ? `${Astro.props.description} - ${SITE_DESCRIPTION}`
+  : SITE_DESCRIPTION;
 ---
 
 <!DOCTYPE html>
 <html lang="en" class="bg-slate-300 dark:bg-slate-700">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={title} description={description} />
   </head>
   <body
     class="max-w-2xl mx-auto sm:mt-4 px-4 rounded-md bg-white dark:bg-gray-900 dark:text-slate-200 shadow-2xl"
   >
-    <Header title={SITE_TITLE} />
+    <Header />
     <main>
       <slot />
     </main>

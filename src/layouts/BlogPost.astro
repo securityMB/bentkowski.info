@@ -5,10 +5,10 @@ import { formatDate } from "@utils/formatDate";
 import Prose from "@layouts/Prose.astro";
 
 type Props = BlogPostInfo;
-const { date, title, prev, next } = Astro.props;
+const { date, title, prev, next, description } = Astro.props;
 ---
 
-<Prose>
+<Prose title={title} description={description}>
   <article>
     <header>
       <h2

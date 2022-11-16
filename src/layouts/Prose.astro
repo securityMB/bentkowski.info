@@ -1,8 +1,9 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
+type Props = {} & Parameters<typeof MainLayout>[0];
 ---
 
-<MainLayout>
+<MainLayout {...Astro.props}>
   <section
     class="prose dark:prose-invert prose-p:text-justify prose-h3:border-b prose-h3:mt-1 prose-img:mx-auto prose-img:border prose-img:p-4 prose-img:bg-slate-100 dark:prose-img:bg-slate-700"
   >

@@ -22,8 +22,19 @@ export async function getAllPosts(): Promise<BlogPostInfo[]> {
       const filepath = md.file;
       const canonicalUrl = `/${year}/${month}/${slug}/`;
       const title = md.frontmatter.title;
+      const description = md.frontmatter.description;
 
-      return { year, month, slug, html, title, filepath, date, canonicalUrl };
+      return {
+        year,
+        month,
+        slug,
+        html,
+        title,
+        filepath,
+        date,
+        description,
+        canonicalUrl,
+      };
     })
     .sort(dateComparer)
     .map(({ ...other }, index, posts) => {
