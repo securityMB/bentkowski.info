@@ -11,6 +11,6 @@ export default defineConfig({
       theme: 'dark-plus'
     }
   },
-  site: 'https://example.com',
+  site: 'https://www.bentkowski.info',
   integrations: [mdx(), sitemap(), tailwind()]
 });

@@ -1,7 +1,8 @@
 import type { ContactInfo } from "./types";
 
 export const SITE_TITLE = "Michał Bentkowski (@SecurityMB)";
-export const SITE_DESCRIPTION = "Welcome to my website!";
+export const SITE_DESCRIPTION =
+  "Personal page of Michał Bentkowski, containing blog posts, research and others.";
 
 export const FOOTER_CONTENT = `© ${new Date().getFullYear()} Michał Bentkowski. All rights reserved.`;
 
