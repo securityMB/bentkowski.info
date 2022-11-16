@@ -3,32 +3,31 @@ title: 'Chromium: Same Origin Policy bypass within a single site a.k.a. "Google 
 date: "2022-11-20"
 ---
 
-Suppose you're visiting a website, which asks you to open a JavaScript console in developer tools, and then call a function called: `magic()`. Would you do it?
+Suppose you're visiting a legit website, like `developers.google.com`, which tells you to open a JavaScript console in your browser, and then just invoke a function called `magic()`. Would you do it?
 
-The answer may depend on how much you trust the website asking you to do so, and how comfortable you are with typing anything in the console. But let's stop for a while, and think about what possibly _might_ go wrong.
-The first and most obvious issue is [self-XSS](https://en.wikipedia.org/wiki/Self-XSS). The code you enter is executed within the context of the origin of the page. This means that the code may exfiltrate your sensitive data, or perform some unwanted actions. However, all of these are limited to the single origin in which the code was called.
+Of course, the function may access everything within the scope of `https://developers.google.com` but it cannot steal data from other origins. Or can it?
 
-Now, is it possible that the code will affect other origins? Not only the one you entered the code on? This is what we're going to focus on in this post.
+In this post, I'm describing a security issue in Chromium, which proves that entering code in a JavaScript console can have a little broader consequences than it may initially seem.
 
 ### A little background
 
-This post is a description of [Chromium bug #1069486](https://crbug.com/1069486) that I reported back in April 2020.
+The issue in question is [Chromium bug #1069486](https://crbug.com/1069486) that I reported back in April 2020.
 
-As of 13th November 2022, the bug is not fixed, which essentially makes it a 0-day. However, I got explicit permission from the Chromium team to do a full disclosure. Also, because the attack scenario requires the victim to enter some code in the DevTools console, I don't believe it's practically exploitable.
+As of 16th November 2022, the bug is not fixed, which essentially makes it a 0-day. However, I got explicit permission from the Chromium team to do a full disclosure. Also, because the attack scenario requires the victim to enter code in the DevTools console, I believe it's not practically exploitable.
 
-I still think it's quite interesting from a purely technical standpoint; also maybe somebody else will be able to escalate it further ([it happened to my bugs before](/2018/07/vulnerability-in-hangouts-chat-aka-how/)).
+I still think that there might be some ways to escalate it that I failed to discover, and maybe you, my dear readers, will have some better ideas.
 
 ### JavaScript console and utilities
 
-In general, entering code in the JavaScript console should be equivalent to executing the same code directly by the website. This means, among others, that even in the console you cannot bypass Same-Origin-Policy or other fundamental security rules imposed by browsers.
+But let's start with some basics. When you enter code in the JavaScript console, it should be equivalent to executing the same code directly by the website. This means, among others, that even in the console you cannot bypass Same-Origin-Policy or other fundamental security principles imposed by browsers.
 
-However, the truth is that the console _is_ a little bit more powerful than the "normal" JavaScript. The difference is in [console utilities](https://developer.chrome.com/docs/devtools/console/utilities/). These are a bunch of functions that are exposed _only_ to the console and they are not available from "normal" Javascript. Let's see what it means.
+The truth is, however, that the console _is_ a little bit more powerful than the "normal" JavaScript. The difference lies in [console utilities](https://developer.chrome.com/docs/devtools/console/utilities/). These are a bunch of functions that are exposed _only_ to the console and they are not available from "normal" Javascript. Let's see what it means.
 
 As an example, take a function called `$$`. This is a shorthand for `document.querySelectorAll`, available only in the console.
 
-If you try to call it from the console, the function executes:
+If you try to call it from the console, the function executes just fine:
 
-![Screenshot showing that you can execute $$ from the console](/roulette/screen1.png)
+![Screenshot showing that you can execute $$ from the console](/roulette/screen1.png "$$ from the console works...")
 
 On the other hand, if you try to call it directly from your HTML, such as from the following code:
 
@@ -40,11 +39,11 @@ On the other hand, if you try to call it directly from your HTML, such as from t
 
 Then you'll get a `ReferenceError`:
 
-![Screenshot showing that you cannot execute $$ from the HTML](/roulette/screen2.png)
+![Screenshot showing that you cannot execute $$ from the HTML](/roulette/screen2.png "... but it doesn't from the HTML")
 
-We may conclude that Chromium must differentiate whether a JS code was executed from the console or not and decide whether certain global functions or objects should be exposed to the code.
+I consider this an expected behavior. Now we may conclude that Chromium must differentiate whether a JS code was executed from the console or not and decide whether certain global functions or objects should be exposed to the code.
 
-At this point, I had an idea. Let's see what happens when we create a function that includes a reference to `$$` in the website, but then we'll call the function from the console.
+At this point, I wondered how exactly Chromium tracks the source of the function call. So my idea was to create a `<script>` tag containing a reference to `$$`Let's see what happens when we create a function that includes a reference to `$$` in the website, but then we'll call the function from the console.
 
 So I created an HTML file with the following code:
 
