@@ -1,6 +1,6 @@
 import type { AstroIntegration } from "astro";
 import sharp from "sharp";
-import { OG_IMAGE_DIR, OG_IMAGE_SIZE } from "./config";
+import { OG_IMAGE_DIR, OG_IMAGE_SIZE, SITE_TITLE } from "./config";
 import { fileURLToPath } from "node:url";
 import { readFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
@@ -15,7 +15,7 @@ async function generateImage(
   { url, title, slug }: OgImageData,
   baseDir: string
 ) {
-  const outputPath = join(baseDir, `${slug}.png`);
+  const outputPath = join(baseDir, `${slug}.jpg`);
   await sharp({
     create: {
       background: "black",
@@ -28,7 +28,7 @@ async function generateImage(
       {
         input: {
           text: {
-            text: title,
+            text: title.replace(` - ${SITE_TITLE}`, ""),
             width: OG_IMAGE_SIZE.width * 0.85,
             dpi: 325,
             font: "sans",

@@ -8,7 +8,7 @@ import { OG_IMAGE_DIR } from "@base/config";
 type Props = BlogPostInfo;
 const { date, title, prev, next, description, slug } = Astro.props;
 const image = new URL(
-  `${OG_IMAGE_DIR}/${slug}.png`,
+  `${OG_IMAGE_DIR}/${slug}.jpg`,
   Astro.url.origin
 ).toString();
 ---
