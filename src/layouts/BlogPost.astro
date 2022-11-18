@@ -3,12 +3,17 @@ import BlogPostNav from "@components/BlogPostNav.astro";
 import type { BlogPostInfo } from "@base/types";
 import { formatDate } from "@utils/formatDate";
 import Prose from "@layouts/Prose.astro";
+import { OG_IMAGE_DIR } from "@base/config";
 
 type Props = BlogPostInfo;
-const { date, title, prev, next, description } = Astro.props;
+const { date, title, prev, next, description, slug } = Astro.props;
+const image = new URL(
+  `${OG_IMAGE_DIR}/${slug}.png`,
+  Astro.url.origin
+).toString();
 ---
 
-<Prose title={title} description={description}>
+<Prose title={title} description={description} image={image}>
   <article>
     <header>
       <h2

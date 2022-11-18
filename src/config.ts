@@ -8,6 +8,8 @@ export const FOOTER_CONTENT = `© ${new Date().getFullYear()} Michał Bentkowski
 
 export const ORIGIN = "https://www.bentkowski.info";
 
+export const OG_IMAGE_DIR = "og-images";
+
 export const OG_IMAGE_SIZE = {
   width: 1200,
   height: 627,
