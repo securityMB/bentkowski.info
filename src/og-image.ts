@@ -1,16 +1,25 @@
 import type { AstroConfig, AstroIntegration } from "astro";
 import sharp from "sharp";
-import { OG_IMAGE_SIZE, ORIGIN } from "./config";
-import type { BlogPostInfo } from "./types";
+import { OG_IMAGE_SIZE } from "./config";
 import { fileURLToPath } from "node:url";
+import { readFile, mkdir } from "node:fs/promises";
+import { join } from "node:path";
+
+type OgImageData = {
+  title: string;
+  url: string;
+  slug: string;
+};
 
 function htmlentities(s: string) {
   return s.replace(/[<&"]/g, (c) => `&#${c.codePointAt(0)};`);
 }
 
-async function generateImage(blogPost: BlogPostInfo) {
-  const url = `${ORIGIN}${blogPost.canonicalUrl}`;
-
+async function generateImage(
+  { url, title, slug }: OgImageData,
+  baseDir: string
+) {
+  const outputPath = join(baseDir, `${slug}.png`);
   await sharp({
     create: {
       background: "black",
@@ -27,7 +36,7 @@ async function generateImage(blogPost: BlogPostInfo) {
       {
         input: {
           text: {
-            text: htmlentities(blogPost.title),
+            text: htmlentities(title),
             width: OG_IMAGE_SIZE.width * 0.85,
             dpi: 325,
             font: "sans",
@@ -41,19 +50,20 @@ async function generateImage(blogPost: BlogPostInfo) {
       {
         input: {
           text: {
-            text: `<u>${htmlentities(url)}</u>`,
-            width: OG_IMAGE_SIZE.width - 400,
-            dpi: 325,
+            text: `<u><span foreground="#888">${htmlentities(url)}</span></u>`,
+            width: OG_IMAGE_SIZE.width - 500,
+            dpi: 200,
             font: "sans",
             spacing: 10,
+            rgba: true,
           },
         },
         gravity: "southeast",
-        top: OG_IMAGE_SIZE.height - 200,
-        left: OG_IMAGE_SIZE.width - 300,
+        top: OG_IMAGE_SIZE.height - 150,
+        left: 30,
       },
     ])
-    .toFile("og-image.png");
+    .toFile(outputPath);
 }
 
 export default function ogImageGenerator(): AstroIntegration {
@@ -65,9 +75,21 @@ export default function ogImageGenerator(): AstroIntegration {
         config = cfg;
       },
       async "astro:build:done"({ routes, dir }) {
-        for (const { distURL, component } of routes) {
+        const baseDir = join(fileURLToPath(dir), "og-images");
+        await mkdir(baseDir, { recursive: true });
+        for (const route of routes) {
+          console.log(route);
+          const { distURL, component } = route;
           if (!distURL) continue;
           if (component !== "src/pages/[year]/[month]/[slug].astro") continue;
+          const path = fileURLToPath(distURL);
+          const html = (await readFile(path)).toString("utf-8");
+          const url =
+            (html.match(/"og:url" content="([^"]+)"/) ?? ["", ""])[1] ?? "";
+          const title =
+            (html.match(/"og:title" content="([^"]+)"/) ?? ["", ""])[1] ?? "";
+          const slug = path.split("/").at(-2) ?? "";
+          await generateImage({ url, title, slug }, baseDir);
         }
       },
     },

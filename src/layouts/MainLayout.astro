@@ -8,6 +8,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@base/config";
 export type Props = {
   title?: string;
   description?: string;
+  image?: string;
 };
 
 const title = Astro.props.title
@@ -22,7 +23,11 @@ const description = Astro.props.description
 <!DOCTYPE html>
 <html lang="en" class="bg-slate-300 dark:bg-slate-700">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={Astro.props.image}
+    />
   </head>
   <body
     class="max-w-2xl mx-auto sm:mt-4 px-4 rounded-md bg-white dark:bg-gray-900 dark:text-slate-200 shadow-2xl"
