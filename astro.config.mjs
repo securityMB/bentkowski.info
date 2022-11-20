@@ -3,7 +3,6 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 import tailwind from "@astrojs/tailwind";
-import ogImage from './src/og-image'
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,5 +12,5 @@ export default defineConfig({
     }
   },
   site: 'https://www.bentkowski.info',
-  integrations: [mdx(), sitemap(), tailwind(), ogImage()]
+  integrations: [mdx(), sitemap(), tailwind()]
 });
