@@ -1,7 +1,7 @@
 import type { BlogPostFrontmatter, BlogPostInfo } from "@base/types";
 import type { MarkdownInstance } from "astro";
 
-export async function getAllPosts(): Promise<BlogPostInfo[]> {
+export function getAllPosts(): BlogPostInfo[] {
   function getFileNameFromPath(path: string) {
     const lastDot = path.lastIndexOf(".");
     const lastSlash = path.lastIndexOf("/");

@@ -6,7 +6,7 @@ import { getAllPosts } from "@utils/getAllPosts";
 export type Props = BlogPostInfo;
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts();
+  const posts = getAllPosts();
 
   return posts.map((info) => {
     const { year, month, slug } = info;

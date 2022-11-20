@@ -6,7 +6,7 @@ import type { GetStaticPaths } from "astro";
 type Props = { title: string; url: string };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts();
+  const posts = getAllPosts();
   return posts.map((post) => {
     const { slug } = post;
     return {
