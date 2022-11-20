@@ -1,13 +1,12 @@
 import { ORIGIN } from "@base/config";
 import { generateOgImage } from "@utils/generateOgImage";
-import { getAllPosts } from "@utils/getAllPosts";
+import { allPosts } from "@utils/allPosts";
 import type { GetStaticPaths } from "astro";
 
 type Props = { title: string; url: string };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
-  return posts.map((post) => {
+  return allPosts.map((post) => {
     const { slug } = post;
     return {
       params: { slug },

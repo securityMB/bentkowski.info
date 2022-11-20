@@ -1,8 +1,6 @@
 import rss from "@astrojs/rss";
-import { getAllPosts } from "@utils/getAllPosts";
+import { allPosts } from "@utils/allPosts";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
-
-const blogPosts = getAllPosts();
 
 export const get = () =>
   rss({
@@ -10,7 +8,7 @@ export const get = () =>
     description: SITE_DESCRIPTION,
     site: import.meta.env.SITE,
     stylesheet: "/rss-style.xsl",
-    items: blogPosts.map((post) => {
+    items: allPosts.map((post) => {
       return {
         link: post.canonicalUrl,
         title: post.title,

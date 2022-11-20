@@ -1,14 +1,12 @@
 ---
 import BlogPost from "@layouts/BlogPost.astro";
 import type { BlogPostInfo } from "@base/types";
-import { getAllPosts } from "@utils/getAllPosts";
+import { allPosts } from "@utils/allPosts";
 
 export type Props = BlogPostInfo;
 
 export async function getStaticPaths() {
-  const posts = getAllPosts();
-
-  return posts.map((info) => {
+  return allPosts.map((info) => {
     const { year, month, slug } = info;
     return {
       params: { year, month, slug },
