@@ -1,5 +1,5 @@
----
 import type { BlogPostFrontmatter, BlogPostInfo } from "@base/types";
+import type { MarkdownInstance } from "astro";
 
 export async function getAllPosts(): Promise<BlogPostInfo[]> {
   function getFileNameFromPath(path: string) {
@@ -11,7 +11,11 @@ export async function getAllPosts(): Promise<BlogPostInfo[]> {
     return b.date.getTime() - a.date.getTime();
   }
 
-  const posts = await Astro.glob<BlogPostFrontmatter>(`../posts/**/*.md`);
+  const importRes = import.meta.glob<MarkdownInstance<BlogPostFrontmatter>>(
+    `../posts/**/*.md`,
+    { eager: true }
+  );
+  const posts = Object.values(importRes);
   return posts
     .map((md) => {
       const date = new Date(md.frontmatter.date);
@@ -55,4 +59,3 @@ export async function getAllPosts(): Promise<BlogPostInfo[]> {
       return { prev, next, ...other };
     });
 }
----

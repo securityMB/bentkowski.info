@@ -19,6 +19,12 @@ const imgUrl = new URL(image, Astro.url);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="RSS Feed for www.bentkowski.info/blog/"
+  href="/rss.xml"
+/>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />

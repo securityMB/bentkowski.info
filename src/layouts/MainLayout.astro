@@ -6,9 +6,9 @@ import Header from "@components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@base/config";
 
 export type Props = {
-  title?: string;
-  description?: string;
-  image?: string;
+  title?: string | undefined;
+  description?: string | undefined;
+  image?: string | undefined;
 };
 
 const title = Astro.props.title
