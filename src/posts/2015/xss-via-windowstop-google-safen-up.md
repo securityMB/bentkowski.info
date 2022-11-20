@@ -1,6 +1,7 @@
 ---
 title: "XSS via window.stop() - Google Safen Up"
 date: "2015-05-01"
+description: "XSS via proper timing of window.stop()"
 ---
 
 In the beginning of 2015, Google launched a new program called [Vulnerability Research Grants](https://www.google.com/about/appsecurity/research-grants/), "_with the goal of rewarding security researchers that look into the security of Google products and services even in the case when no vulnerabilities are found_". I have submitted quite a few bugs to them and decided to give it a try. The grant was given to me after a few days of waiting and my task was to check [Google Safen Up](https://safendup-xss-game.appspot.com/) application which presents an interesting approach to minimize effects of XSS-es.

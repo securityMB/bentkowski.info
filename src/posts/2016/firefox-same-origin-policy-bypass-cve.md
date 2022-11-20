@@ -1,6 +1,7 @@
 ---
 title: "Firefox - Same-Origin Policy bypass (CVE-2015-7188)"
 date: "2016-07-05"
+description: "Same-Origin-Policy bypass via some obscure IP parsing in Firefox"
 ---
 
 In this post I will explain the [Same-Origin policy bypass](https://www.mozilla.org/en-US/security/advisories/mfsa2015-122/) ([CVE-2015-7188](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7188)) in Firefox I reported to Mozilla last year. The root cause of that issue was a minor nuance in IP address parsing in some of the most popular OS-es. The final working exploit, however, additionally needed Flash installed and activated on the victim's machine. Another limitation was that it only worked to http protocol. However, I think that this bug is interesting from a purely technical standpoint, hence I decided to share.

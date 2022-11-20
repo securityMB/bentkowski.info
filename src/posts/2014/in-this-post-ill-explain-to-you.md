@@ -1,6 +1,7 @@
 ---
 title: "Facebook and two dots leak"
 date: "2014-09-15"
+description: "Chromium on macOS parsed two dots in domain names as one dot... and that led to security issue!"
 ---
 
 In this post, I'll explain to you an interesting bug in Facebook, which made it possible to steal user's name and email as well as an access token that allowed to read person's friend list. This is a bug I personally consider my favourite bug bounty finding, you'll soon find out why :) It was discovered by me and [@evil_xorb](https://twitter.com/evil_xorb).

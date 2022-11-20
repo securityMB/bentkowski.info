@@ -1,6 +1,7 @@
 ---
 title: "XSS via file upload - www.google.com (Postini Header Analyzer)"
 date: "2015-05-12"
+description: "Story of XSS and XSS filter bypass via archive formats"
 ---
 
 In this post, I'll show you a very fun XSS via fie upload found on www.google.com domain in a service called [Postini Header Analyzer](http://www.google.com/postini/headeranalyzer/). Postini, according to Wikipedia, is an e-mail, web security and archiving service, owned by Google since 2007, that provides cloud computing services for filtering e-mail spam and malware.

@@ -1,6 +1,7 @@
 ---
 title: "XSS via Host header - www.google.com/cse"
 date: "2015-04-22"
+description: "Abusing IE11 behavior to set your own Host header and conduct XSS"
 ---
 
 A few months ago I found a really fine XSS in Google's Custom Search Engine. The trick I needed to use doesn't seem to be broadly known and that's a pity as it sometimes might allow to make unexploitable exploitable. So here it is: XSS via Host header - Internet Explorer only. The trick was discovered by Sergey Bobrov ([@Black2Fan](https://twitter.com/black2fan)) two years ago and still hasn't been fixed in IE11. Details of the bug were once described on [Sergey's website](http://blackfan.ru/) but they're no longer there ([albeit archive.org saves the day](https://web.archive.org/web/20131107024350/http://blackfan.ru/)) so I'll give you a short overview.

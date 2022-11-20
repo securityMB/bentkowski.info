@@ -1,6 +1,7 @@
 ---
 title: "XSS-es in Google Caja"
 date: "2016-07-03"
+description: "Three XSS-es in Google Caja abusing alternative syntax for tokens in JS"
 ---
 
 In this article, I will describe three XSS-es I reported to Google VRP this year. All of them were possible thanks to Google Caja's sandbox escape.

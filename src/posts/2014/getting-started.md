@@ -1,6 +1,7 @@
 ---
 title: "Getting started"
 date: "2014-03-30"
+description: "Just saying hello!"
 ---
 
 Hi everybody and welcome to my blog.

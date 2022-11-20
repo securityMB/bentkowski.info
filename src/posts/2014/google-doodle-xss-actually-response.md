@@ -1,6 +1,7 @@
 ---
 title: "Google Doodle - XSS (actually response splitting)"
 date: "2014-07-17"
+description: "A story of unexpected response splitting in google.com"
 ---
 
 In this post, I'll show a HTTP response splitting vulnerability, which I've found in [Google Doodle](http://www.google.com/doodles/) website.
@@ -21,13 +22,18 @@ However, the dash-underscore substitution could also be used in attacker's favou
 For example, let's take a code:
 
 ```html
-<script>-=alert;-(1)</script>
+<script>
+  -=alert;-(1)
+</script>
 ```
 
 This is definitely not a correct javascript but it suddenly becomes one when the character substitution occurs:
 
 ```html
-<script>_=alert;_(1)</script>
+<script>
+  _ = alert;
+  _(1);
+</script>
 ```
 
 As the code in the response differs from the code in the request, Chrome is not able to filter it.

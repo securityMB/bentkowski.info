@@ -1,6 +1,7 @@
 ---
 title: "Another XSS in Google Colaboratory"
 date: "2018-09-20"
+description: "XSS in Google Colaboratory via re-enabling AssistiveMathML in cookie"
 ---
 
 Three months ago, I wrote a blog post in which I described an [XSS I found in Google Colaboratory](/2018/06/xss-in-google-colaboratory-csp-bypass.html). In this post, I will expand the topic and show you another XSS I identified in the same application, which is directly related to the previous.

@@ -1,6 +1,7 @@
 ---
 title: "Yet Another Google Caja bypasses hat-trick"
 date: "2017-11-30"
+description: "Three XSS-es in Google Caja via new ECMAScript features"
 ---
 
 One and a half year ago, I wrote a [blog post about my three XSS-es found in Google Docs and Google Developers thanks to Google Caja bypasses](http://blog.bentkowski.info/2016/07/xss-es-in-google-caja.html). In this year, I had a short look at Caja again and it resulted in three another bypasses, not related to the previous ones. So let's have a look at them!

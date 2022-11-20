@@ -1,6 +1,7 @@
 ---
 title: "Easter eggs in Google Bug Bounty"
 date: "2014-04-26"
+description: "A list of a few easter eggs in the older bug bounty report page"
 ---
 
 Today I had a closer look on HTML source of Google's Vulnerability Submission Form at http://goo.gl/vulnz and it turned out there are a couple of easter eggs:

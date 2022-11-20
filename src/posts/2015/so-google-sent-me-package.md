@@ -1,6 +1,7 @@
 ---
 title: "So Google sent me a package..."
 date: "2015-01-25"
+description: "A little story about a gift I got from Google"
 ---
 
 Two weeks ago I received a mail from Google Security Team informing me that I was one of top 10 reporters in 2014.

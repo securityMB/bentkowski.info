@@ -1,6 +1,7 @@
 ---
 title: "Gmail and Google+ - tale of two XSS-es"
 date: "2014-06-14"
+description: "A story of two XSS-es; including one via cookie"
 ---
 
 Note: you can also read [Polish version of this post](http://sekurak.pl/xss-owanie-google-a-czyli-opowiesc-o-dwoch-xss-ach/) on Sekurak

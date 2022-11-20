@@ -1,6 +1,7 @@
 ---
 title: "XSS in Google Colaboratory + CSP bypass"
 date: "2018-06-21"
+description: "XSS in Google Colaboratory via MathJax library"
 ---
 
 In this note, I describe an interesting XSS that I found in February 2018 in one of the Google applications. I won't only show directly where the XSS was, but it's also a case sudy of what attempts I made to find it and what dead ends I needed to overcome. In addition, I'm showing a Content-Security-Policy bypass using _script gadgets_.

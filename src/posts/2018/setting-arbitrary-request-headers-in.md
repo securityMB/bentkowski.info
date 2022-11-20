@@ -1,6 +1,7 @@
 ---
 title: "Setting arbitrary request headers in Chromium via CRLF injection"
 date: "2018-06-20"
+description: "Chromium bug in `csp` parameter of iframes allowing to inject arbitrary headers"
 ---
 
 In this short note I'll describe a bug I found in Chrome recently. It allowed to set arbitrary headers in cross-domain requests. [@insertScript](https://insert-script.blogspot.co.at/2018/05/adobe-reader-pdf-client-side-request.html) recently found a very similar bug in Adobe Reader plugin but it turns out you can still expect those bugs in browsers themselves.

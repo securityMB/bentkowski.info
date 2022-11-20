@@ -1,6 +1,7 @@
 ---
 title: "Google Code Playground - Path Traversal"
 date: "2014-04-07"
+description: "Path Traversal in Google Code Playground"
 ---
 
 There's already been some traffic here so let me describe one of my earliest bugs I've reported to Google Security Team.
