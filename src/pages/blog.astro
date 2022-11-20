@@ -1,7 +1,7 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 import { formatDate } from "@utils/formatDate";
-import { getAllPosts } from "@utils/markdown.astro";
+import { getAllPosts } from "@utils/getAllPosts";
 
 const blogPosts = await getAllPosts();
 ---
