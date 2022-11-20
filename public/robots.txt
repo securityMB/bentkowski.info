@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://bentkowski.info
+
+# Sitemaps
+Sitemap: https://bentkowski.info/sitemap-index.xml
