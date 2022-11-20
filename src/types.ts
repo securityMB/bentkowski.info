@@ -1,8 +1,11 @@
-export type BlogPostFrontmatter = { title: string; date: string };
+export type BlogPostFrontmatter = {
+  title: string;
+  date: string;
+  description?: string | undefined;
+};
 export type BlogPostSibling = {
   title: string;
   canonicalUrl: string;
-  desciption: string | undefined;
 };
 export type BlogPostInfo = {
   date: Date;
@@ -13,7 +16,7 @@ export type BlogPostInfo = {
   title: string;
   filepath: string;
   canonicalUrl: string;
-  description: string;
+  description?: string | undefined;
   next?: BlogPostSibling | undefined;
   prev?: BlogPostSibling | undefined;
 };
