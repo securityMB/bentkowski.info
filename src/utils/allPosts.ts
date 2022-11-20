@@ -1,4 +1,8 @@
-import type { BlogPostFrontmatter, BlogPostInfo } from "@base/types";
+import type {
+  BlogPostFrontmatter,
+  BlogPostInfo,
+  BlogPostSibling,
+} from "@base/types";
 import type { MarkdownInstance } from "astro";
 
 function getFileNameFromPath(path: string) {
@@ -8,6 +12,14 @@ function getFileNameFromPath(path: string) {
 }
 function dateComparer(a: BlogPostInfo, b: BlogPostInfo) {
   return b.date.getTime() - a.date.getTime();
+}
+
+function siblingFromPost(
+  post: BlogPostInfo | undefined
+): BlogPostSibling | undefined {
+  if (!post) return;
+  const { canonicalUrl, title } = post;
+  return { canonicalUrl, title };
 }
 
 const importRes = import.meta.glob<MarkdownInstance<BlogPostFrontmatter>>(
@@ -40,20 +52,11 @@ export const allPosts: BlogPostInfo[] = posts
     };
   })
   .sort(dateComparer)
-  .map(({ ...other }, index, posts) => {
+  .map(({ ...rest }, index, posts) => {
     const prevPost = posts[index + 1];
     const nextPost = posts[index - 1];
-    let prev: BlogPostInfo["prev"];
-    let next: BlogPostInfo["next"];
+    const prev = siblingFromPost(prevPost);
+    const next = siblingFromPost(nextPost);
 
-    if (prevPost) {
-      const { canonicalUrl, title } = prevPost;
-      prev = { canonicalUrl, title };
-    }
-    if (nextPost) {
-      const { canonicalUrl, title } = nextPost;
-      next = { canonicalUrl, title };
-    }
-
-    return { prev, next, ...other };
+    return { prev, next, ...rest };
   });
