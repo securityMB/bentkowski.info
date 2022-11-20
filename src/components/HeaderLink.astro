@@ -13,6 +13,7 @@ const isActive = stripLastSlash(href) === stripLastSlash(Astro.url.pathname);
 
 <a
   href={href}
+  aria-current={isActive && "page"}
   class:list={[
     "p-2",
     "hover:bg-slate-100 transition",
