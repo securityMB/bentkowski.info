@@ -1,21 +1,21 @@
 import rss from "@astrojs/rss";
-import type { MarkdownContent } from "astro";
+import { getAllPosts } from "@utils/getAllPosts";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
-const posts = getAllPosts;
+const blogPosts = await getAllPosts();
 
 export const get = () =>
   rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: import.meta.env.SITE,
+    stylesheet: "/rss-style.xsl",
     items: blogPosts.map((post) => {
-      console.log(post.file);
       return {
-        link: post.url ?? "asd",
-        title: post.frontmatter.title,
-        pubDate: post.frontmatter.date,
-        description: post.frontmatter.description,
+        link: post.canonicalUrl,
+        title: post.title,
+        pubDate: post.date,
+        description: post.description ?? "",
       };
     }),
   });

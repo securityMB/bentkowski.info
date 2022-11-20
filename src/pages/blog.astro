@@ -2,13 +2,23 @@
 import MainLayout from "@layouts/MainLayout.astro";
 import { formatDate } from "@utils/formatDate";
 import { getAllPosts } from "@utils/getAllPosts";
+import Icon from "astro-icon";
 
 const blogPosts = await getAllPosts();
 ---
 
 <MainLayout>
   <section>
-    <h2 class="mb-4">List of blog posts:</h2>
+    <h2 class="mb-4 flex flex-row justify-between">
+      <div>List of blog posts</div>
+      <a
+        href="/rss.xml"
+        target="_blank"
+        class="flex flex-row items-center gap-1 text-orange-600 hover:text-orange-800"
+      >
+        <Icon name="mdi:rss-box" class="h-6" /> RSS
+      </a>
+    </h2>
     <ul class="flex flex-col ml-8 gap-1 list-['→_']">
       {
         blogPosts.map((post) => (
