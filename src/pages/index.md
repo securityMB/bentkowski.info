@@ -2,7 +2,7 @@
 layout: "@layouts/Prose.astro"
 ---
 
-Hello! My name is **Michał Bentkowski** (**@SecurityMB**). I am security tester, researcher and training instructor.
+Hello! My name is **Michał Bentkowski** (**@SecurityMB**). I am a security tester, researcher and training instructor.
 
 In this place, I'm sharing my research related mostly to web applications and browser security.
 
