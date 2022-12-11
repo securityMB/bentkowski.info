@@ -5,7 +5,7 @@ title: "Research"
 
 ### Research
 
-Currently, I'm sharing my research on [the blog](/blog). In the years 2018-2022 I shared my research on [Securitum research blog](https://research.securitum.com). Here are some highlights:
+Currently, I'm sharing my research on [the blog](/blog). In the years 2018-2022 I shared my research on [Securitum research blog](https://research.securitum.com/research-blog/). Here are some highlights:
 
 - [Helping secure DOMPurify](https://research.securitum.com/helping-secure-dompurify-part-1/)
 - [Mutation XSS via namespace confusion - DOMPurify < 2.0.17 bypass](https://research.securitum.com/mutation-xss-via-mathml-mutation-dompurify-2-0-17-bypass/)
