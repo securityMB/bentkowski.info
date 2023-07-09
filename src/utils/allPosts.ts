@@ -49,7 +49,7 @@ export const allPosts: BlogPostInfo[] = posts
       date,
       description,
       canonicalUrl,
-    } as BlogPostInfo;
+    };
   })
   .sort(dateComparer)
   .map(({ ...rest }, index, posts) => {
