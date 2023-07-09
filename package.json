@@ -11,18 +11,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.11.5",
-    "@astrojs/rss": "^1.0.3",
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/rss": "^2.4.3",
     "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^2.1.2",
-    "@fontsource/bebas-neue": "^4.5.9",
-    "astro": "^1.6.0",
+    "@astrojs/tailwind": "^4.0.0",
+    "@fontsource/bebas-neue": "^5.0.5",
+    "astro": "^2.8.0",
     "astro-icon": "^0.8.0",
     "tailwindcss": "^3.2.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",
-    "@types/sharp": "^0.31.0",
-    "sharp": "^0.31.2"
+    "@types/sharp": "^0.32.0",
+    "sharp": "^0.32.1"
   }
 }
