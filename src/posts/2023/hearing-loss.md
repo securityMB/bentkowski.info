@@ -12,4 +12,4 @@ The first person that had a suspicion that I might have hearing loss was my Poli
 
 She shared the observation with my parents and that's how my life story with hearing loss has begun. I had my first hearing tests that, since then, I've done so many times. The most common one is that you sit inside a soundproof cabin, you need to wear headphones and they play sounds with increasing volume and increasing frequency. Your goal is to press a button whenever you can hear the sound. The result is an [audiogram](https://en.wikipedia.org/wiki/Audiogram), which is a graph showing the frequencies and intensity (measured in dB). Below I'm sharing two of my audiograms and a graph from Wikipedia that shows what is the expected hearing range. The left audiogram is from 20??, and the right one is the most recent one from 2021.
 
-On the first one you can clearly see that I had a significant loss on higher frequen
+On the first one you can clearly see that I had a significant loss on higher frequencies.
