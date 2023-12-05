@@ -5,8 +5,9 @@ title: "Research"
 
 ### Research
 
-Currently, I'm sharing my research on [the blog](/blog). In the years 2018-2022 I shared my research on [Securitum research blog](https://research.securitum.com/research-blog/). Here are some highlights:
+You can find some of my research on [the blog](/blog). Some research is hosted on external sources though. You can find references in the list below:
 
+- [HTML - a mutating beast](https://docs.google.com/presentation/d/19H7zhb06ngQ7ipRQ8rBdyFIgkZyKWQAJBUuQbGkDYgI/edit?resourcekey=0-qCWjXLkYpcNatUBHD8T6kA8)
 - [Helping secure DOMPurify](https://research.securitum.com/helping-secure-dompurify-part-1/)
 - [Mutation XSS via namespace confusion - DOMPurify < 2.0.17 bypass](https://research.securitum.com/mutation-xss-via-mathml-mutation-dompurify-2-0-17-bypass/)
 - [Prototype pollution - and bypassing client-side HTML sanitizers](https://research.securitum.com/prototype-pollution-and-bypassing-client-side-html-sanitizers/)
